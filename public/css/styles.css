@@ -460,6 +460,9 @@ d-inline-block comprar-ahora{
     vertical-align: middle;
 }
 
+.alumno{
+    min-height: calc(100vh - 250px);
+}
 
 
 /* MEDIAQUERYS BOOSTRAP */

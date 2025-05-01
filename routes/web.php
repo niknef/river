@@ -18,6 +18,8 @@ use App\Http\Controllers\TallesController;
 use App\Http\Controllers\AuthController;
 // Usamos el controlador de la vista ADMIN
 use App\Http\Controllers\AdminController;
+//Usamos el controlador para la vista Alumno
+use App\Http\Controllers\AlumnoController;
 // Usamos el middleware para verificar si el usuario es admin
 use App\Http\Middleware\IsAdmin;
 
@@ -41,6 +43,8 @@ Route::get('/contacto', [ContactoController::class, 'contacto'])->name('contacto
 // Ruta para procesar el formulario de contacto
 Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto.enviar');
 
+// Ruta para mostrar la vista alumno
+Route::get('/alumnos', [AlumnoController::class, 'index'])->name('alumno.index');
 // Listado de rutas protegidas para roles de admin
 // Middleware para verificar si el usuario es admin 
 // Middleware esta dentro de App-> Http-> Middleware->IsAdmin   
