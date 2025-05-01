@@ -14,7 +14,7 @@ class TallesController extends Controller
         $talle->talle = $input['talle'];
         $talle->save();
         return redirect()
-            ->route('articulos.admin')
+            ->route('admin.section', ['seccion' => 'talles'])
             ->with('feedback.message', 'Talle creado correctamente')
             ->with('feedback.type', 'success');
     }
@@ -28,7 +28,7 @@ class TallesController extends Controller
         $talle->talle = $request->input('talle');
         $talle->save();
         return redirect()
-            ->route('articulos.admin')
+            ->route('admin.section', ['seccion' => 'talles'])
             ->with('feedback.message', 'Talle actualizado correctamente')
             ->with('feedback.type', 'success');
     }
@@ -39,7 +39,7 @@ class TallesController extends Controller
         $talle->delete();
         
         return redirect()
-            ->route('articulos.admin')
+            ->route('admin.section', ['seccion' => 'talles'])
             ->with('feedback.message', 'Talle eliminado correctamente')
             ->with('feedback.type', 'success');
     }

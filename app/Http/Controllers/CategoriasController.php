@@ -13,7 +13,7 @@ class CategoriasController extends Controller
         $categoria->categoria = $input['nombre'];
         $categoria->save();
         return redirect()
-            ->route('articulos.admin')
+            ->route('admin.section', ['seccion' => 'categorias'])
             ->with('feedback.message', 'Categoría creada correctamente')
             ->with('feedback.type', 'success');
     }
@@ -22,7 +22,7 @@ class CategoriasController extends Controller
         $categoria = Categorias::findOrFail($id);
         $categoria->delete();
         return redirect()
-            ->route('articulos.admin')
+            ->route('admin.section', ['seccion' => 'categorias'])
             ->with('feedback.message', 'Categoría eliminada correctamente')
             ->with('feedback.type', 'success');
     }
@@ -32,7 +32,7 @@ class CategoriasController extends Controller
         $categoria->categoria = $request->input('nombre');
         $categoria->save();
         return redirect()
-            ->route('articulos.admin')
+            ->route('admin.section', ['seccion' => 'categorias'])
             ->with('feedback.message', 'Categoría actualizada correctamente')
             ->with('feedback.type', 'success');
     }

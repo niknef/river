@@ -59,7 +59,7 @@ class ArticulosController extends Controller
         $articulo->save();
 
         return redirect()
-            ->route('articulos.admin')
+            ->route('admin.section', ['seccion' => 'articulos'])
             ->with('feedback.message', 'Producto agregado correctamente.')
             ->with('feedback.type', 'success');
     }
@@ -69,7 +69,7 @@ class ArticulosController extends Controller
         $articulo->delete();
 
         return redirect()
-            ->route('articulos.admin')
+            ->route('admin.section', ['seccion' => 'articulos'])
             ->with('feedback.message', 'Articulo eliminado correctamente')
             ->with('feedback.type', 'success');
     }
@@ -105,7 +105,7 @@ class ArticulosController extends Controller
         $articulo->save();
 
         return redirect()
-            ->route('articulos.admin')
+            ->route('admin.section', ['seccion' => 'articulos'])
             ->with('feedback.message', 'Producto actualizado correctamente.')
             ->with('feedback.type', 'success');
     }
