@@ -92,7 +92,7 @@
                         >
                     </div>
                     <div class="card-body text-center">
-                        <h5 class="card-title fw-bold text-truncate">{{ $articulo->nombre }}</h5>
+                        <h3 class="card-title fw-bold text-truncate">{{ $articulo->nombre }}</h3>
                         <p class="card-text small text-muted">{{ $articulo->descripcion }}</p>
                         <p class="w-semibold">${{ number_format($articulo->precio, 2, ',', '.') }} ARS</p>
                         <a href="{{ route('articulos.detalle', ['id' => $articulo->articulo_id]) }}" class="btn btn-detalles btn-sm w-100">Ver Detalles</a>

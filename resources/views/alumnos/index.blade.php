@@ -13,7 +13,7 @@
             <div class="card h-100 text-center shadow-sm">
                 <img src="{{ asset('images/alumnos/' . $alumno->foto) }}" class="card-img-top rounded-circle mx-auto mt-4" alt="{{ $alumno->nombre_completo }}" style="width: 150px; height: 150px; object-fit: cover;">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $alumno->nombre_completo }}</h5>
+                    <h3 class="card-title">{{ $alumno->nombre_completo }}</h3>
                     <p class="card-text text-muted"><em>Nacimiento: {{ \Carbon\Carbon::parse($alumno->nacimiento)->format('d-m-Y') }}</em></p>
                     <div class="d-flex justify-content-center gap-2 flex-wrap">
                         @if ($alumno->mail)

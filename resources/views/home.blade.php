@@ -185,7 +185,7 @@
                                 @endif
                             </div>
                             <div class="card-body text-center">
-                                <h5 class="card-title fw-bold text-truncate">{{ $articulo->nombre }}</h5>
+                                <h3 class="card-title fw-bold text-truncate">{{ $articulo->nombre }}</h3>
                                 <p class="card-text small text-muted">{{ $articulo->descripcion }}</p>
                                 <p class="fw-semibold">${{ number_format($articulo->precio, 2, ',', '.') }} ARS</p>
                                 <a href="{{ route('articulos.detalle', ['id' => $articulo->articulo_id]) }}" class="btn btn-detalles btn-sm w-100">Ver Detalles</a>
@@ -302,7 +302,7 @@
 
             <!-- Información adicional -->
             <div class="additional-info mt-3">
-                <h4>Información Adicional</h4>
+                <h3>Información Adicional</h3>
                 <p>Descubre más sobre este RIVER ID en <a
                         href="https://login.riverid.com.ar/Account/Login?ReturnUrl=%2Fconnect%2Fauthorize%2Fcallback%3Fclient_id%3Dmiportal%26redirect_uri%3Dhttps%253A%252F%252Fwww.riverid.com.ar%252Fsignin-oidc%26response_type%3Dcode%26scope%3Dopenid%2520profile%26code_challenge%3DBEOf09yYXmJErLdLIYi838uVRRX2gRwP2y0bejl17D4%26code_challenge_method%3DS256%26response_mode%3Dform_post%26nonce%3D638534738542304810.ZWY2NGJjNDctZTM5ZS00MmM1LWI2Y2UtZGYwZTQwNTM4NzMzOTBkNDFlNjYtZDhlZC00ODBhLWEwMTgtNGI1NzM3M2JkNTQw%26state%3DCfDJ8JTEgsQmdT5BsKRGDII6XAyrtweGof77bs07QY5AlF2Xkli_R6XrCEk7tIaQ7pJ9bpwC5SKGppk78Zc7YCtlGEsVL4ZA2SmanNJaGiUXfVvZp4XTbu1uIDh-Hwr0kLWtW_Y8rNSOVTXC7tH7S-sAg0r3-u9OoFDOO68cABBY1fOMAZK0O1d1apcO26hTUPBjjYw5poG3rF2GWC_OAi8MK3_8xV2fX0AUWwItgkBdl05_VOIsWVPwQrL8P-vXR0YLtCiycgJeTgsDysm5H-cOlq9aCbyBxDHpYUd5QbI470SMuDEq68K_Lnm51pqqDigxH-jlhBG9NhS34rOQ7xeuFQVjywqLN10qyxIQQ-DeXGEBdOjkxT2aTt0sacFHVg_vGg%26x-client-SKU%3DID_NET6_0%26x-client-ver%3D6.35.0.0"
                         target="_blank" class="id">nuestro sitio web</a>.</p>
@@ -329,7 +329,7 @@
                             <img src="{{ asset('images/' . $noticia->imagen) }}" class="card-img-top" alt="{{ $noticia->titulo }}">
                         @endif
                         <div class="card-body">
-                            <h5 class="card-title">{{ $noticia->titulo }}</h5>
+                            <h3 class="card-title">{{ $noticia->titulo }}</h3>
                             <p class="card-text">{{ $noticia->contenido }}</p>
                         </div>
                     </div>
