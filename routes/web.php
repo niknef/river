@@ -52,6 +52,9 @@ Route::post('/contacto', [ContactoController::class, 'enviar'])->name('contacto.
 
 // Ruta para mostrar la vista alumno
 Route::get('/alumnos', [AlumnoController::class, 'index'])->name('alumno.index');
+
+// Ruta para mostrar la vista de noticias
+Route::get('/noticias', [NoticiaController::class, 'index'])->name('noticias.index');
 // Listado de rutas protegidas para roles de admin
 // Middleware para verificar si el usuario es admin 
 // Middleware esta dentro de App-> Http-> Middleware->IsAdmin   
@@ -72,6 +75,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::delete('/talles/{id}', [TallesController::class, 'destroy'])->name('talles.destroy');
     Route::put('/talles/{id}', [TallesController::class, 'update'])->name('talles.update');
     Route::post('/talles', [TallesController::class, 'store'])->name('talles.store');
+
+    Route::delete('/noticias/{id}', [NoticiaController::class, 'destroy'])->name('noticias.destroy');
+    Route::put('/noticias/{id}', [NoticiaController::class, 'update'])->name('noticias.update');
+    Route::post('/noticias', [NoticiaController::class, 'store'])->name('noticias.store');
 });
     
 // Rutas para la autenticación
@@ -91,10 +98,5 @@ Route::post('/register', [AuthController::class, 'register'])->name('auth.regist
 // Ruta para Deslogearse
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-//ruta para las noticias
-Route::middleware(['auth'])->group(function () {
-    Route::middleware('admin')->group(function () {
-        Route::resource('admin/noticias', NoticiaController::class)->names('admin.noticias');
-    });
-});
+
 

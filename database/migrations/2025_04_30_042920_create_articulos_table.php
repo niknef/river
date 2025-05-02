@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id('articulo_id');
             $table->string('nombre', 100);
             $table->text('descripcion')->nullable();
-            $table->decimal('precio', 10, 2);
+            $table->decimal('precio', 12, 2);
             /* $table->string('talle', 50)->nullable(); */
             $table->string('imagen', 255)->nullable();
             $table->string('imagen_hover', 255)->nullable();

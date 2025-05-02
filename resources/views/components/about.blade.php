@@ -1,5 +1,5 @@
 <!-- INTRODUCCIÓN -->
-<section id="about" class="py-5">
+<div id="about" class="py-5">
         <div class="container">
             <div class="row gy-lg-5 align-items-center">
                 <div class="col-lg-6 order-lg-1 text-center text-lg-start">
@@ -29,5 +29,5 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     <!-- FIN INTRODUCCIÓN -->

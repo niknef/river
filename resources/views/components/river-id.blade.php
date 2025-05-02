@@ -1,4 +1,4 @@
-<section id="mas-brillos" class="my-5">
+<div id="mas-brillos" class="my-5">
         <div class="container text-center">
             <h2>¡Unite a la Comunidad de River <span class="id">ID</span>!</h2>
 
@@ -105,4 +105,4 @@
                         target="_blank" class="id">nuestro sitio web</a>.</p>
             </div>
         </div>
-    </section>
+    </div>

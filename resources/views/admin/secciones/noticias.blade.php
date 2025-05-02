@@ -5,12 +5,12 @@
     <h3 class="mt-4">Listado de Noticias</h3>
 
     <div class="modal-footer d-flex justify-content-center mt-4">
-        <a href="{{ route('admin.noticias.create') }}" class="btn btn-success mb-3">Agregar Noticia</a>
+        <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#agregarNoticiaModal">Agregar Noticia</button>
     </div>
 
     <div class="table-responsive">
         <table class="table table-bordered mt-2 equal-width-table">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
                     <th>Título</th>
@@ -27,26 +27,26 @@
                         <td>{{ Str::limit($noticia->contenido, 100) }}</td>
                         <td>
                             @if ($noticia->imagen)
-                                <img src="{{ asset('images/' . $noticia->imagen) }}" alt="Imagen" width="100">
+                                <img src="{{ asset('images/noticias/' . $noticia->imagen) }}" alt="Imagen" class="img-thumbnail mx-auto d-block" style="width: 100px; height: auto;">
                             @else
-                                Sin imagen
+                                <span>Sin imagen</span>
                             @endif
                         </td>
                         <td>
                             <div class="d-flex justify-content-center gap-3">
-                                <a href="{{ route('admin.noticias.edit', $noticia) }}" class="btn btn-warning">Editar</a>
-
-                                <form action="{{ route('admin.noticias.destroy', $noticia) }}" method="POST" onsubmit="return confirm('¿Estás seguro que querés eliminar esta noticia?');">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-danger">Eliminar</button>
-                                </form>
+                                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#verNoticiaModal{{ $noticia->id }}">Ver</button>
+                                <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarNoticiaModal{{ $noticia->id }}">Editar</button>
+                                <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarNoticiaModal{{ $noticia->id }}">Eliminar</button>
                             </div>
                         </td>
                     </tr>
+                    @include('partials.noticias.ver-modal', ['noticia' => $noticia])
+                    @include('partials.noticias.editar-modal', ['noticia' => $noticia])
+                    @include('partials.noticias.eliminar-modal', ['noticia' => $noticia])
                 @endforeach
             </tbody>
         </table>
     </div>
+    @include('partials.noticias.agregar-modal')
 </div>
 @endsection

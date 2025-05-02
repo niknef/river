@@ -49,7 +49,7 @@
                             <a class="nav-link text-uppercase text-dark" href="{{ url('/alumnos') }}">Alumnos</a>
                         </li>
                         <li class="nav-item px-2 py-2">
-                            <a class="nav-link text-uppercase text-dark" href="#seccion-libre">Partidos</a>
+                            <a class="nav-link text-uppercase text-dark" href="{{ url('/noticias') }}">Noticias</a>
                         </li>
                         @if(auth()->check())
                             @if(auth()->user()->role === 'admin')
@@ -65,19 +65,17 @@
 
                         @if (auth()->check())
 
-                            <!-- Nombre del usuario -->
-                            <li class="nav-item px-2 py-2 d-flex align-items-center text-uppercase text-dark fw-semibold">
-                                {{ auth()->user()->name }}
-                            </li>
-                            <!-- Botón cerrar sesión -->
-                            <li class="nav-item px-2 py-2 d-flex align-items-center">
-                                <form method="POST" action="{{ route('auth.logout') }}" class="m-0">
-                                    @csrf
-                                    <button type="submit" class="btn btn-danger btn-sm d-flex align-items-center gap-2" style="height: 40px;">
-                                        <i class="bi bi-box-arrow-right"></i> Salir
-                                    </button>
-                                </form>
-                            </li>
+                        <li class="nav-item px-2 py-2 text-center text-uppercase fw-semibold d-lg-flex justify-content-lg-start align-items-lg-center">
+                            {{ auth()->user()->name }}
+                        </li>
+                        <li class="nav-item px-2 py-2 text-center d-lg-flex justify-content-lg-start align-items-lg-center">
+                            <form method="POST" action="{{ route('auth.logout') }}" class="m-0">
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-sm d-inline-flex align-items-center gap-2" style="height: 40px;">
+                                    <i class="bi bi-box-arrow-right"></i> Salir
+                                </button>
+                            </form>
+                        </li>
 
                         @else
                             <li class="nav-item px-2 py-2">

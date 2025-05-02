@@ -1,4 +1,4 @@
-<section id="mision-vision-valores" class="py-5 text-center">
+<div id="mision-vision-valores" class="py-5 text-center">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4">
@@ -39,4 +39,4 @@
                 </div>
             </div>
         </div>
-    </section>
+    </div>

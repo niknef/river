@@ -3,7 +3,7 @@
 @section('title', 'Contacto')
 
 @section('content')
-<section class="container-fluid px-0 mt-5">
+<div class="container-fluid px-0 mt-5">
     <div class="row g-0">
         <!-- Columna izquierda: Formulario -->
         <div class="col-md-6 d-flex align-items-center justify-content-center bg-white">
@@ -51,5 +51,5 @@
             <img src="{{ asset('images/productos/Estadio.jpg') }}" alt="Banner de contacto" class="img-fluid w-100 object-fit-cover rounded">
         </div>
     </div>
-</section>
+</div>
 @endsection

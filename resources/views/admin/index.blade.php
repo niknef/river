@@ -24,7 +24,7 @@
                 <a href="{{ route('admin.section', ['seccion' => 'mensajes']) }}" class="btn btn-danger w-100 p-4 text-white fs-5">✉️ Mensajes</a>
             </div>
             <div class="col">
-                <a href="{{ route('admin.noticias.index') }}" class="btn btn-dark w-100 p-4 text-white fs-5">📰 Noticias</a>
+                <a href="{{ route('admin.section', ['seccion' => 'noticias']) }}" class="btn btn-dark w-100 p-4 text-white fs-5">📰 Noticias</a>
             </div>
         </div>
     @else
@@ -35,7 +35,7 @@
             <a href="{{ route('admin.section', ['seccion' => 'categorias']) }}" class="btn btn-info">Categorías</a>
             <a href="{{ route('admin.section', ['seccion' => 'usuarios']) }}" class="btn btn-warning">Usuarios</a>
             <a href="{{ route('admin.section', ['seccion' => 'mensajes']) }}" class="btn btn-danger">Mensajes</a>
-            <a href="{{ route('admin.noticias.index') }}" class="btn btn-dark">Noticias</a>
+            <a href="{{ route('admin.section', ['seccion' => 'noticias']) }}" class="btn btn-dark">Noticias</a>
         </div>
     @endif
 

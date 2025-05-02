@@ -1,4 +1,4 @@
-<section id="productos-home">
+<div id="productos-home">
         <div class="row d-flex justify-content-center">
             <div class="title pt-3 pb-5" id="titulo-descuento">
                 <h2 class="position-relative d-inline-block ms-4">Explora Nuestra variedad de Productos </h2>
@@ -36,4 +36,4 @@
             </div>
 
         </div>
-    </section>
+    </div>

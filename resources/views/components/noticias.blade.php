@@ -1,4 +1,4 @@
-<section id="seccion-libre" class="my-5">
+<div id="seccion-libre" class="my-5">
     <div class="container">
         <div class="title pt-3 pb-5">
         <h2 class="position-relative d-inline-block ms-4">Últimas Novedades</h2>
@@ -27,4 +27,4 @@
             @endforelse
         </div>
     </div>
-</section>
+</div>

@@ -8,91 +8,64 @@ use Illuminate\Support\Facades\File;
 
 class NoticiaController extends Controller
 {
-    public function index()
-    {
-        $noticias = Noticia::latest()->paginate(10);
-        return view('admin.noticias.index', compact('noticias'));
+    public function index() {
+        $noticias = Noticia::all();
+        return view('noticias.index', compact('noticias'));
     }
-
-    public function create()
-    {
-        return view('admin.noticias.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'titulo' => 'required|string|max:255',
-            'contenido' => 'required|string',
-            'imagen' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048'
-        ]);
-
-        $nombreImagen = null;
-
+    public function store(Request $request) {
+        $input = $request->all();
+        $noticia = new Noticia();
+        $noticia->titulo = $input['titulo'];
+        $noticia->contenido = $input['contenido'];
+        // Manejo de imágenes
         if ($request->hasFile('imagen')) {
-            $nombreImagen = time() . '_' . $request->file('imagen')->getClientOriginalName();
-            $request->file('imagen')->move(public_path('images/noticias'), $nombreImagen);
+            $filename = time() . '_img.' . $request->imagen->extension();
+            $request->imagen->move(public_path('images/noticias/'), $filename);
+            $noticia->imagen = $filename;
         }
 
-        Noticia::create([
-            'titulo' => $request->titulo,
-            'contenido' => $request->contenido,
-            'imagen' => $nombreImagen ? 'noticias/' . $nombreImagen : null,
-        ]);
-
+        $noticia->save();
         return redirect()
-        ->route('admin.section', ['seccion' => 'noticias'])
-        ->with('feedback.message', 'Noticia creada correctamente.')
-        ->with('feedback.type', 'success');
-        
+            ->route('admin.section', ['seccion' => 'noticias'])
+            ->with('feedback.message', 'Noticia creada correctamente')
+            ->with('feedback.type', 'success');
+
     }
 
-    public function edit(Noticia $noticia)
-    {
-        return view('admin.noticias.edit', compact('noticia'));
+    public function destroy($id) {
+        $noticia = Noticia::findOrFail($id);
+        $noticia->delete();
+        // Borrar imagen si existe
+        if ($noticia->imagen && file_exists(public_path('images/noticias/' . $noticia->imagen))) {
+            unlink(public_path('images/noticias/' . $noticia->imagen));
+        }
+        return redirect()
+            ->route('admin.section', ['seccion' => 'noticias'])
+            ->with('feedback.message', 'Noticia eliminada correctamente')
+            ->with('feedback.type', 'success');
     }
 
-    public function update(Request $request, Noticia $noticia)
-    {
-        $request->validate([
-            'titulo' => 'required|string|max:255',
-            'contenido' => 'required|string',
-            'imagen' => 'nullable|image|mimes:jpg,jpeg,png,gif|max:2048'
-        ]);
-
+    public function update(Request $request, $id) {
+        $noticia = Noticia::findOrFail($id);
+        $noticia->titulo = $request->input('titulo');
+        $noticia->contenido = $request->input('contenido');
+        // Manejo de imágenes
         if ($request->hasFile('imagen')) {
             // Borrar imagen anterior si existe
-            if ($noticia->imagen && File::exists(public_path('images/' . $noticia->imagen))) {
-                File::delete(public_path('images/' . $noticia->imagen));
+            if ($noticia->imagen && file_exists(public_path('images/noticias/' . $noticia->imagen))) {
+                unlink(public_path('images/noticias/' . $noticia->imagen));
             }
-
-            $nombreImagen = time() . '_' . $request->file('imagen')->getClientOriginalName();
-            $request->file('imagen')->move(public_path('images/noticias'), $nombreImagen);
-            $noticia->imagen = 'noticias/' . $nombreImagen;
+        
+            $filename = time() . '_img.' . $request->imagen->extension();
+            $request->imagen->move(public_path('images/noticias'), $filename);
+            $noticia->imagen =  $filename;
         }
-
-        $noticia->titulo = $request->titulo;
-        $noticia->contenido = $request->contenido;
+        
         $noticia->save();
-
         return redirect()
-        ->route('admin.section', ['seccion' => 'noticias'])
-        ->with('feedback.message', 'Noticia actualizada correctamente.')
-        ->with('feedback.type', 'success');
-    }
-
-    public function destroy(Noticia $noticia)
-    {
-        if ($noticia->imagen && File::exists(public_path('images/' . $noticia->imagen))) {
-            File::delete(public_path('images/' . $noticia->imagen));
-        }
-
-        $noticia->delete();
-
-        return redirect()
-        ->route('admin.section', ['seccion' => 'noticias'])
-        ->with('feedback.message', 'Noticia Eliminada correctamente.')
-        ->with('feedback.type', 'success');
+            ->route('admin.section', ['seccion' => 'noticias'])
+            ->with('feedback.message', 'Noticia actualizada correctamente')
+            ->with('feedback.type', 'success');
     }
 
     public function publicas()

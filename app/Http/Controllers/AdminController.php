@@ -8,6 +8,7 @@ use App\Models\Talles;
 use App\Models\Categorias;
 use App\Models\User;
 use App\Models\Mensaje;
+use App\Models\Noticia;
 
 class AdminController extends Controller
 {
@@ -18,6 +19,7 @@ class AdminController extends Controller
         $categorias = Categorias::all();
         $usuarios = User::all();
         $mensajes = Mensaje::orderBy('fecha_envio', 'desc')->get();
+        $noticias = Noticia::all();
 
         return view('admin.index', [
             'articulos' => $allArticulos,
@@ -25,6 +27,7 @@ class AdminController extends Controller
             'categorias' => $categorias,
             'usuarios' => $usuarios,
             'mensajes' => $mensajes,
+            'noticias' => $noticias,
         ]);
     }
 
@@ -35,13 +38,10 @@ class AdminController extends Controller
         $categorias = Categorias::all();
         $usuarios = User::all();
         $mensajes = Mensaje::orderBy('fecha_envio', 'desc')->get();
-
-        if ($seccion === 'noticias') {
-            $noticias = \App\Models\Noticia::latest()->get();
-            return view("admin.secciones.$seccion", compact('articulos', 'talles', 'categorias', 'usuarios', 'mensajes', 'noticias'));
-        }
+        $noticias = Noticia::all();
+        
     
 
-        return view("admin.secciones.$seccion", compact('articulos', 'talles', 'categorias', 'usuarios', 'mensajes'));
+        return view("admin.secciones.$seccion", compact('articulos', 'talles', 'categorias', 'usuarios', 'mensajes','noticias' ));
     }
 }
