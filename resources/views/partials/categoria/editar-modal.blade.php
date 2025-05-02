@@ -8,7 +8,7 @@
                 @method('PUT')
 
                 <div class="modal-header bg-warning text-dark">
-                    <h5 class="modal-title" id="editarModalLabel{{ $categoria->categoria_id }}">Editar Categoria</h5>
+                    <h4 class="modal-title" id="editarModalLabel{{ $categoria->categoria_id }}">Editar Categoria</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
 

@@ -9,7 +9,7 @@
 @section('content')
     @include('components.about')
     @include('components.valores')
-    @include('components.productos-home')
-    @include('components.river-id')
+    @include('components.productos')
+    @include('components.id')
     @include('components.noticias')
 @endsection

@@ -15,7 +15,7 @@
                 @method('PUT')
 
                 <div class="modal-header bg-warning text-dark">
-                    <h5 class="modal-title" id="editarModalLabel{{ $articulo->articulo_id }}">Editar Producto</h5>
+                    <h4 class="modal-title" id="editarModalLabel{{ $articulo->articulo_id }}">Editar Producto</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
 

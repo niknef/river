@@ -2,7 +2,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-success text-white">
-                <h5 class="modal-title" id="verComprasLabel{{ $usuario->id }}">Compras de {{ $usuario->name }}</h5>
+                <h4 class="modal-title" id="verComprasLabel{{ $usuario->id }}">Compras de {{ $usuario->name }}</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">

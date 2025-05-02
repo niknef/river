@@ -6,7 +6,7 @@
                 @csrf
 
                 <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title" id="agregarModalLabel">Agregar Nuevo Producto</h5>
+                    <h4 class="modal-title" id="agregarModalLabel">Agregar Nuevo Producto</h4>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                 </div>
 

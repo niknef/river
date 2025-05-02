@@ -13,7 +13,7 @@ use App\Http\Controllers\ArticulosController;
 // Usamos el controlador de la vista CATEGORIAS
 use App\Http\Controllers\CategoriasController;
 // Usamos el controlador de la vista TALLES
-use App\Http\Controllers\TallesController;
+use App\Http\Controllers\TalleController;
 // Usamos el controlador de la vista AUTH
 use App\Http\Controllers\AuthController;
 // Usamos el controlador de la vista ADMIN
@@ -72,9 +72,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/categorias/{id}', [CategoriasController::class, 'update'])->name('categorias.update');
     Route::post('/categorias', [CategoriasController::class, 'store'])->name('categorias.store');
 
-    Route::delete('/talles/{id}', [TallesController::class, 'destroy'])->name('talles.destroy');
-    Route::put('/talles/{id}', [TallesController::class, 'update'])->name('talles.update');
-    Route::post('/talles', [TallesController::class, 'store'])->name('talles.store');
+    Route::delete('/talles/{id}', [TalleController::class, 'destroy'])->name('talles.destroy');
+    Route::put('/talles/{id}', [TalleController::class, 'update'])->name('talles.update');
+    Route::post('/talles', [TalleController::class, 'store'])->name('talles.store');
 
     Route::delete('/noticias/{id}', [NoticiaController::class, 'destroy'])->name('noticias.destroy');
     Route::put('/noticias/{id}', [NoticiaController::class, 'update'])->name('noticias.update');

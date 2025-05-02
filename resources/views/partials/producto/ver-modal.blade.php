@@ -3,7 +3,7 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header bg-primary text-white">
-                <h5 class="modal-title" id="verModalLabel{{ $articulo->articulo_id }}">Detalles del Producto</h5>
+                <h4 class="modal-title" id="verModalLabel{{ $articulo->articulo_id }}">Detalles del Producto</h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
             </div>
             <div class="modal-body">
