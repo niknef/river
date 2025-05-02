@@ -9,7 +9,12 @@
                 <div class="col">
                     <div class="card h-100 border-0 shadow-sm">
                         @if ($noticia->imagen)
-                            <img src="{{ asset('images/' . $noticia->imagen) }}" class="card-img-top" alt="{{ $noticia->titulo }}">
+                        <div class="overflow-hidden" style="aspect-ratio: 16/9;">
+                        <img src="{{ asset('images/noticias/' . $noticia->imagen) }}"
+                            alt="{{ $noticia->titulo }}"
+                            class="w-100 h-100 object-fit-cover"
+                            style="display: block;">
+                    </div>
                         @endif
                         <div class="card-body">
                             <h3 class="card-title">{{ $noticia->titulo }}</h3>
