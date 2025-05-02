@@ -11,7 +11,7 @@ use App\Models\Categorias;
 
 class ArticulosController extends Controller
 {
-    public function index() {
+    /* public function index() {
         $allArticulos = Articulos::with(['talles', 'categorias'])->get();
         $talles = Talles::all();
         $categorias = Categorias::all();
@@ -19,9 +19,43 @@ class ArticulosController extends Controller
             'articulos' => $allArticulos,
             'talles' => $talles,
             'categorias' => $categorias
-        ]);
+        ]); 
 
-    }
+    }*/
+
+    public function index(Request $request)
+    {
+        $query = Articulos::with(['talles', 'categorias']);
+
+        // Filtro por categoría
+        if ($request->filled('categoria')) {
+            $query->whereHas('categorias', function ($q) use ($request) {
+                $q->where('categoria', $request->categoria);
+            });
+        }
+
+        // Filtro por talle
+        if ($request->filled('talle')) {
+            $query->whereHas('talles', function ($q) use ($request) {
+                $q->where('talle', $request->talle);
+            });
+        }
+
+        // Filtro por precio máximo
+        if ($request->filled('precio')) {
+            $query->where('precio', '<=', $request->precio);
+        }
+
+        $filteredArticulos = $query->get();
+        $talles = Talles::all();
+        $categorias = Categorias::all();
+
+        return view('articulos.index', [
+            'articulos' => $filteredArticulos,
+            'talles' => $talles,
+            'categorias' => $categorias,
+    ]);
+}
 
     public function detalle($id) {
         $articulo = Articulos::findOrFail($id);

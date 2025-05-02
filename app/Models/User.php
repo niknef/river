@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->role === $role;
     }
+
+    public function compras()
+    {
+        return $this->hasMany(Compras::class, 'user_id', 'id');
+    }
 }

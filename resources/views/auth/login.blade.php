@@ -3,31 +3,48 @@
 @section('title', 'Login')
 
 @section('content')
-    <div id="login">
-        <div class="container mb-5 text-center">
-            <h2 class="mt-3 font-weight-bold">Login</h2>
+<div id="login">
+    <div class="container py-5" style="max-width: 500px;">
+
+        <div class="title col-md-6 mb-4 mb-md-0 my-4 pb-4">
+            <h2 class="position-relative d-inline-block mx-4">Login</h2>
         </div>
-        <div class="container" style="max-width: 500px; margin: 0 auto;">
-            <form method="post" action="{{ route('auth.authenticate') }}">
+
+        <div class="bg-light p-4 rounded-3 shadow-sm">
+            <form method="POST" action="{{ route('auth.authenticate') }}">
                 @csrf
-                <div class="mb-3">
-                    <label class="form-label">Email address</label>
-                    <input type="email" class="form-control" name="email" aria-describedby="emailHelp" required>
+
+                <div class="mb-4">
+                    <label class="form-label text-muted mx-1">Email address</label>
+                    <input 
+                        type="email" 
+                        class="form-control rounded-m shadow-sm px-4 py-2 border-0 focus-ring" 
+                        name="email" 
+                        aria-describedby="emailHelp" 
+                        required
+                    >
                 </div>
-                <div class="mb-3">
-                    <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control" required>
+
+                <div class="mb-4">
+                    <label class="form-label text-muted mx-1">Password</label>
+                    <input 
+                        type="password" 
+                        name="password" 
+                        class="form-control rounded-m shadow-sm px-4 py-2 border-0 focus-ring" 
+                        required
+                    >
                 </div>
 
                 <div class="mb-3 text-center">
-                    <button type="submit" class="btn btn-primary mt-3">Loguearse</button>
+                    <button type="submit" class="btn btn-danger btn-lg my-3">Iniciar sesión</button>
                 </div>
-                <p class="text-center" style="font-size: 0.875rem;">
-                    Si no tienes cuenta,
-                    <a href="{{ url('/register') }}">Regístrate aquí</a>.
+
+                <p class="text-center small">
+                    ¿No tenés cuenta?
+                    <a href="{{ url('/register') }}">Registrate acá</a>.
                 </p>
             </form>
         </div>
     </div>
-    
+</div>
 @endsection

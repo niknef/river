@@ -20,9 +20,11 @@
                 <tr>
                     <td>{{ $categoria->categoria_id }}</td>
                     <td>{{ $categoria->categoria }}</td>
-                    <td class="d-flex justify-content-center gap-3">
-                        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarCategoriaModal{{ $categoria->categoria_id }}">Editar</button>
-                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarCategoriaModal{{ $categoria->categoria_id }}">Eliminar</button>
+                    <td>
+                        <div class="d-flex justify-content-center gap-3">
+                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarCategoriaModal{{ $categoria->categoria_id }}">Editar</button>
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarCategoriaModal{{ $categoria->categoria_id }}">Eliminar</button>
+                        </div>
                     </td>
                 </tr>
                 @include('partials.categoria.editar-modal', ['categoria' => $categoria])

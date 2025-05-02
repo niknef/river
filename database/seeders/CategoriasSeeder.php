@@ -14,21 +14,81 @@ class CategoriasSeeder extends Seeder
     public function run(): void
     {
         DB::table('categorias')->insert([
-            ['categoria' => 'Camisas'],
-            ['categoria' => 'Pantalones'],
-            ['categoria' => 'Zapatos'],
-            ['categoria' => 'Accesorios'],
-            ['categoria' => 'Vestidos'],
-            ['categoria' => 'Faldas'],
-            ['categoria' => 'Chaquetas'],
-            ['categoria' => 'Suéteres'],
-            ['categoria' => 'Ropa interior'],
-            ['categoria' => 'Camiseta de Futbol'],
-            ['categoria' => 'Campera de Futbol'],
-            ['categoria' => 'Buzo de Futbol'],
-            ['categoria' => 'Remera de Futbol'],
-            ['categoria' => 'Short de Futbol'],
-            ['categoria' => 'Calza'],
+            [
+                'categoria' => 'Camisas',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'categoria' => 'Pantalones',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'categoria' => 'Zapatos',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'categoria' => 'Accesorios',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'categoria' => 'Vestidos',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'categoria' => 'Faldas',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'categoria' => 'Chaquetas',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'categoria' => 'Suéteres',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'categoria' => 'Ropa interior',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'categoria' => 'Camiseta de Futbol',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'categoria' => 'Campera de Futbol',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'categoria' => 'Buzo de Futbol',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'categoria' => 'Remera de Futbol',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'categoria' => 'Short de Futbol',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'categoria' => 'Calza',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }

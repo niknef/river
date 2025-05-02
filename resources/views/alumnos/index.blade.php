@@ -4,7 +4,9 @@
 
 @section('content')
 <div class="container py-5">
-    <h1 class="text-center mb-5">Conocé a los Alumnos</h1>
+<div class="title pt-3 pb-5">
+    <h2 class="position-relative d-inline-block ms-4">Alumnos</h2>
+</div>
     <div class="row row-cols-1 row-cols-md-3 g-4">
         @foreach ($alumnos as $alumno)
         <div class="col">

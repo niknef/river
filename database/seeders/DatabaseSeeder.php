@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Alumno;
+use App\Models\Compras;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -26,6 +27,8 @@ class DatabaseSeeder extends Seeder
             CategoriasSeeder::class,
             ArticulosSeeder::class,
             AlumnoSeeder::class,
+            NoticiaSeeder::class,
+            ComprasSeeder::class,
         ]);
     }
 }

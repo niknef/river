@@ -22,6 +22,10 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AlumnoController;
 // Usamos el middleware para verificar si el usuario es admin
 use App\Http\Middleware\IsAdmin;
+//Usamos el controlador para la las Noticias de river
+use App\Http\Controllers\NoticiaController;
+
+use App\Http\Controllers\ComprasController;
 
 
 // LLamando al Metodo Index
@@ -37,6 +41,9 @@ Route::get('/articulos', [ArticulosController::class, 'index'])->name('articulos
 Route::get('/articulos/{id}', [ArticulosController::class, 'detalle'])
     ->name('articulos.detalle')
     ->whereNumber('id'); 
+
+// Ruta para agregar una compra al carrito
+Route::post('/articulos/{articulo_id}', [ComprasController::class, 'store'])->name('compras.store');
 
 //Ruta para vista de contacto
 Route::get('/contacto', [ContactoController::class, 'contacto'])->name('contacto');
@@ -83,3 +90,11 @@ Route::post('/register', [AuthController::class, 'register'])->name('auth.regist
 
 // Ruta para Deslogearse
 Route::post('/logout', [AuthController::class, 'logout'])->name('auth.logout');
+
+//ruta para las noticias
+Route::middleware(['auth'])->group(function () {
+    Route::middleware('admin')->group(function () {
+        Route::resource('admin/noticias', NoticiaController::class)->names('admin.noticias');
+    });
+});
+

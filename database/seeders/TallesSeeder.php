@@ -14,12 +14,41 @@ class TallesSeeder extends Seeder
     public function run(): void
     {
         DB::table('talles')->insert([
-            ['talle' => 'XS'], // 1
-            ['talle' => 'S'], // 2
-            ['talle' => 'M'], // 3
-            ['talle' => 'L'], // 4
-            ['talle' => 'XL'], // 5
-            ['talle' => 'XXL'], // 6
+            [
+                'talle' => 'XS',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'talle' => 'S',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'talle' => 'M',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'talle' => 'L',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'talle' => 'XL',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'talle' => 'XXL',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+            [
+                'talle' => 'XXXL',
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
         ]);
     }
 }

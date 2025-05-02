@@ -21,12 +21,15 @@
                     <td>{{ $usuario->name }}</td>
                     <td>{{ $usuario->email }}</td>
                     <td>{{ $usuario->role }}</td>
-                    <td class="d-flex justify-content-center gap-3">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editarUsuarioModal{{ $usuario->id }}">Ver Compras</button>
+                    <td>
+                        <div class="d-flex justify-content-center gap-3">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#verComprasModal{{ $usuario->id }}">
+                                Ver Compras
+                            </button>
+                        </div>
                     </td>
-                </tr>
-                {{-- @include('partials.usuario.editar-modal', ['usuario' => $usuario]) --}}
-                {{-- @include('partials.usuario.eliminar-modal', ['usuario' => $usuario]) --}}
+                </tr>   
+                @include('partials.compras.ver-modal', ['usuario' => $usuario])  
                 @endforeach
             </tbody>
         </table>

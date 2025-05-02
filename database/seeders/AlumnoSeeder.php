@@ -21,6 +21,8 @@ class AlumnoSeeder extends Seeder
                 'github' => 'https://github.com/niknef',
                 'linkedin' => 'https://www.linkedin.com/in/nicolasfirpo/',
                 'mail' => 'nicolas.firpo@davinci.edu.ar',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'nombre_completo' => 'Matías Martinez',
@@ -29,6 +31,8 @@ class AlumnoSeeder extends Seeder
                 'github' => 'https://github.com/MatiasJulianMartinez?tab=repositories',
                 'linkedin' => ' https://www.linkedin.com/in/matias-julian-martinez-a15599208/',
                 'mail' => 'martinezmatiasdigital@gmail.com',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'nombre_completo' => 'Matías Neto',
@@ -36,7 +40,9 @@ class AlumnoSeeder extends Seeder
                 'foto' => 'perfil-matias-neto.jpg',
                 'github' => 'https://github.com/M4ttux/',
                 'linkedin' => 'https://linkedin.com/',
-                'mail' => 'https://github.com/M4ttux/'
+                'mail' => 'https://github.com/M4ttux/',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
         ]);
     }

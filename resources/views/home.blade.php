@@ -283,67 +283,32 @@
 
 
     <!-- SECCIÓN PROXIMOS PARTIDOS -->
-    <section id="seccion-libre" class="my-5 bg-light-blue">
-        <div class="container text-center">
-            <div class="title pt-3 pb-5">
-                <h2 class="position-relative d-inline-block ms-4">Proximos partidos del Millonario</h2>
-            </div>
-
-            <div class="row row-cols-1 row-cols-md-2 g-4">
-                <div class="col">
-                    <div class="card">
-                        <img src="{{ asset('images/productos/partido1.png') }}" class="card-img-top"
-                            alt="River Plate vs Deportivo Riestra">
-                        <div class="card-body">
-                            <h5 class="card-title">Deportivo Riestra vs River Plate</h5>
-                            <p class="card-text text-secondary"><span class="id">Primera Division</span> - Jueves 13/6 3:00
-                                p.m.</p>
-                            <p class="card-text">Prepárate para un emocionante duelo entre River Plate y Deportivo Riestra
-                                en la Primera División. ¡No te lo pierdas!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <img src="{{ asset('images/productos/partido2.png') }}" class="card-img-top"
-                            alt="River Plate vs Lanus">
-                        <div class="card-body">
-                            <h5 class="card-title">River Plate vs Lanus</h5>
-                            <p class="card-text text-secondary"><span class="id">Primera Division</span> - Domingo 21/7 por
-                                definirse.</p>
-                            <p class="card-text">Prepárate para un emocionante duelo entre River Plate y Lanús en la Primera
-                                División. ¡No te lo pierdas!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <img src="{{ asset('images/productos/partido3.png') }}" class="card-img-top"
-                            alt="River Plate vs Sarmiento">
-                        <div class="card-body">
-                            <h5 class="card-title">River Plate vs Sarmiento</h5>
-                            <p class="card-text text-secondary"><span class="id">Primera Division</span> - Domingo 28/7 por
-                                definirse.</p>
-                            <p class="card-text">Prepárate para un emocionante duelo entre River Plate y Sarmiento en la
-                                Primera División. ¡No te lo pierdas!</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="card">
-                        <img src="{{ asset('images/productos/partido4.png') }}" class="card-img-top"
-                            alt="River Plate vs Union">
-                        <div class="card-body">
-                            <h5 class="card-title">River Plate vs Union</h5>
-                            <p class="card-text text-secondary"><span class="id">Primera Division</span> - Domingo 4/8 por
-                                definirse.</p>
-                            <p class="card-text">Prepárate para un emocionante duelo entre River Plate y Union en la Primera
-                                División. ¡No te lo pierdas!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- SECCIÓN NOTICIAS -->
+<section id="seccion-libre" class="my-5 bg-light-blue">
+    <div class="container text-center">
+        <div class="title pt-3 pb-5">
+            <h2 class="position-relative d-inline-block ms-4">Últimas Novedades</h2>
         </div>
-    </section>
+
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            @forelse($noticias as $noticia)
+                <div class="col">
+                    <div class="card h-100">
+                        @if ($noticia->imagen)
+                            <img src="{{ asset('images/' . $noticia->imagen) }}" class="card-img-top" alt="{{ $noticia->titulo }}">
+                        @endif
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $noticia->titulo }}</h5>
+                            <p class="card-text">{{ $noticia->contenido }}</p>
+                        </div>
+                    </div>
+                </div>
+            @empty
+                <p class="text-center">No hay novedades por el momento.</p>
+            @endforelse
+        </div>
+    </div>
+</section>
+
 
 @endsection

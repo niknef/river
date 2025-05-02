@@ -20,9 +20,11 @@
                 <tr>
                     <td>{{ $talle->talle_id }}</td>
                     <td>{{ $talle->talle }}</td>
-                    <td class="d-flex justify-content-center gap-3">
-                        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarTalleModal{{ $talle->talle_id }}">Editar</button>
-                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarTalleModal{{ $talle->talle_id }}">Eliminar</button>
+                    <td>
+                        <div class="d-flex justify-content-center gap-3">
+                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarTalleModal{{ $talle->talle_id }}">Editar</button>
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarTalleModal{{ $talle->talle_id }}">Eliminar</button>
+                        </div>
                     </td>
                 </tr>
                 @include('partials.talle.editar-modal', ['talle' => $talle])

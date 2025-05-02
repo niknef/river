@@ -3,60 +3,106 @@
 @section('title', 'Productos')
 
 @section('content')
-<div id="productos">
-    <h2 class="text-center">Nuestro catálogo</h2>
-    <p class="pb-3 text-center subtitulo">Todo en indumentaria de River Plate</p>
 
-    <!-- Botón de filtros -->
-    <div class="d-flex justify-content-center">
-        <button class="btn btn-outline-danger mb-4" type="button" data-bs-toggle="collapse" data-bs-target="#filtros" aria-expanded="false" aria-controls="filtros">
-            Filtrar Productos
-        </button>
-    </div>
 
-    <div class="collapse" id="filtros">
-        <div class="card card-body">
-            <form method="GET" action="#">
-                <div class="mb-3">
-                    <label for="categoria" class="form-label">Categoría</label>
-                    <select class="form-control" id="categoria" name="categoria">
-                        <option value="">Selecciona una categoría</option>
-                        <option value="Camiseta de Futbol" {{ request('categoria') == 'Camiseta de Futbol' ? 'selected' : '' }}>Camisetas de Futbol</option>
-                        <option value="Campera de Futbol" {{ request('categoria') == 'Campera de Futbol' ? 'selected' : '' }}>Camperas de Futbol</option>
-                        <option value="Buzo de Futbol" {{ request('categoria') == 'Buzo de Futbol' ? 'selected' : '' }}>Buzos de Futbol</option>
-                        <option value="Remera de Futbol" {{ request('categoria') == 'Remera de Futbol' ? 'selected' : '' }}>Remeras de Futbol</option>
-                        <option value="Short de Futbol" {{ request('categoria') == 'Short de Futbol' ? 'selected' : '' }}>Shorts de Futbol</option>
-                    </select>
+<div class="container pt-3 pb-5">
+    <div class="bg-light row align-items-center shadow-sm my-4 mx-1 p-4">
+        <!-- Título y subtítulo -->
+        <div class="title col-md-6 mb-4 mb-md-0">
+            <h2 class="position-relative d-inline-block">Catálogo</h2>
+            <p class="subtitulo my-2">Todo en indumentaria de River Plate</p>
+        </div>
+
+        <div class="col-md-6">
+        <div>
+            <form method="GET" action="{{ route('articulos.index') }}">
+                <div class="row g-3 align-items-end">
+    
+                    <!-- Categoría -->
+                    <div class="col-12 col-md-4">
+                        <label for="categoria" class="form-label fw-semibold">
+                            <i class="fas fa-tags me-1 text-danger"></i> Categoría
+                        </label>
+                        <select class="form-select {{ request('categoria') ? 'border-danger' : '' }}" id="categoria" name="categoria">
+                            <option value="">Todas las categorías</option>
+                            @foreach($categorias as $categoria)
+                                <option value="{{ $categoria->categoria }}" {{ request('categoria') == $categoria->categoria ? 'selected' : '' }}>
+                                    {{ ucfirst($categoria->categoria) }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+    
+                    <!-- Talle -->
+                    <div class="col-12 col-md-4">
+                        <label for="talle" class="form-label fw-semibold">
+                            <i class="fas fa-ruler-combined me-1 text-danger"></i> Talle
+                        </label>
+                        <select class="form-select {{ request('talle') ? 'border-danger' : '' }}" id="talle" name="talle">
+                            <option value="">Todos los talles</option>
+                            @foreach($talles as $talle)
+                                <option value="{{ $talle->talle }}" {{ request('talle') == $talle->talle ? 'selected' : '' }}>
+                                    {{ $talle->talle }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+    
+                    <!-- Precio -->
+                    <div class="col-12 col-md-4">
+                        <label for="precio" class="form-label fw-semibold">
+                            <i class="fas fa-dollar-sign me-1 text-danger"></i> Precio Max.
+                        </label>
+                        <input type="number" class="form-control {{ request('precio') ? 'border-danger' : '' }}" id="precio" name="precio" placeholder="Ej: 10000" value="{{ request('precio') }}">
+                    </div>
+    
+                    <!-- Botones -->
+                    <div class="col-12 d-flex justify-content-center gap-3 mt-3">
+                        <button type="submit" class="btn btn-danger px-4">
+                            <i class="fas fa-filter me-2"></i>Aplicar filtros
+                        </button>
+                        <a href="{{ route('articulos.index') }}" class="btn btn-outline-secondary px-4">
+                            <i class="fas fa-times me-2"></i>Limpiar filtros
+                        </a>
+                    </div>
+    
                 </div>
-                <button type="submit" class="btn btn-primary">Aplicar filtros</button>
             </form>
         </div>
     </div>
+    </div>
+    
 
-    <div class="row d-flex justify-content-center">
-        @foreach($articulos as $articulo)
-            <div class="col-12 col-sm-6 col-md-4 mb-4">
-                <div class="card border-0 text-center h-100">
-                    <img class="img-original" src="{{ asset('images/productos/' . $articulo->imagen) }}" alt="{{ $articulo->nombre }}">
-                    <img class="img-hover" src="{{ asset('images/productos/' . $articulo->imagen_hover) }}" alt="{{ $articulo->nombre }}">
-                    <div class="p-5">
-                        <div class="rating mt-3">
-                            <span class="text-primary"><i class="fas fa-star"></i></span>
-                            <span class="text-primary"><i class="fas fa-star"></i></span>
-                            <span class="text-primary"><i class="fas fa-star"></i></span>
-                            <span class="text-primary"><i class="fas fa-star"></i></span>
-                            <span class="text-primary"><i class="fas fa-star"></i></span>
-                        </div>
-                        <h3 class="card-title pb-2">{{ $articulo->nombre }}</h3>
-                        <p class="card-text">{{ $articulo->descripcion }}</p>
-                        <p class="text-success">${{ number_format($articulo->precio, 2, ',', '.') }} ARS</p>
-                        <a href="{{ route('articulos.detalle', ['id' => $articulo->articulo_id]) }}" class="btn btn-detalles w-100">Ver Detalles</a>
+    
+    <!-- Productos -->
+    <div class="row d-flex justify-content-left">
+        @forelse($articulos as $articulo)
+        <div class="col-12 col-md-4 mb-4">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="position-relative overflow-hidden" style="aspect-ratio: 1 / 1;">
+                        <img 
+                            class="w-100 h-100 object-fit-cover img-original transition-opacity" 
+                            src="{{ asset('images/productos/' . $articulo->imagen) }}" 
+                            alt="{{ $articulo->nombre }}"
+                        >
+                        <img 
+                            class="w-100 h-100 object-fit-cover position-absolute top-0 start-0 img-hover transition-opacity" 
+                            src="{{ asset('images/productos/' . $articulo->imagen_hover) }}" 
+                            alt="{{ $articulo->nombre }}"
+                        >
+                    </div>
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold text-truncate">{{ $articulo->nombre }}</h5>
+                        <p class="card-text small text-muted">{{ $articulo->descripcion }}</p>
+                        <p class="w-semibold">${{ number_format($articulo->precio, 2, ',', '.') }} ARS</p>
+                        <a href="{{ route('articulos.detalle', ['id' => $articulo->articulo_id]) }}" class="btn btn-detalles btn-sm w-100">Ver Detalles</a>
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <p class="text-center mt-5">No se encontraron productos con los filtros aplicados.</p>
+        @endforelse
     </div>
-</div>
-
+    
 
 @endsection

@@ -7,7 +7,7 @@
         <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#agregarProductoModal">Agregar Producto</button>
     </div>
     <div class="table-responsive">
-        <table class="table table-bordered table-hover mt-2 equal-width-table">
+        <table class="table table-bordered mt-2 equal-width-table">
             <thead class="thead-dark">
                 <tr>
                     <th>ID</th>
@@ -36,10 +36,12 @@
                     <td>{{ $articulo->cantidad }}</td>
                     <td>{{ $articulo->categorias->categoria ?? 'N/A' }}</td>
                     <td>{{ $articulo->talles->talle ?? 'N/A' }}</td>
-                    <td class="d-flex justify-content-center gap-3">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productoModal{{ $articulo->articulo_id }}">Ver</button>
-                        <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarModal{{ $articulo->articulo_id }}">Editar</button>
-                        <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarModal{{ $articulo->articulo_id }}">Eliminar</button>
+                    <td>
+                        <div class="d-flex justify-content-center gap-3">
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#productoModal{{ $articulo->articulo_id }}">Ver</button>
+                            <button class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#editarModal{{ $articulo->articulo_id }}">Editar</button>
+                            <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminarModal{{ $articulo->articulo_id }}">Eliminar</button>
+                        </div>
                     </td>
                 </tr>
                 @include('partials.producto.ver-modal', ['articulo' => $articulo])

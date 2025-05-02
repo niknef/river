@@ -14,28 +14,29 @@
 <div id="detalle-producto" class="container py-5">
     <div class="row justify-content-center align-items-center g-4">
         <div class="col-lg-5 col-md-12 text-center">
-            <div class="position-relative rounded shadow overflow-hidden">
-                <img 
-                    src="{{ asset('images/productos/' . $articulo->imagen) }}" 
-                    alt="Imagen principal de {{ $articulo->nombre }}" 
-                    class="img-fluid rounded img-original"
-                    style="height: 100%; width: auto; max-width: 100%; object-fit: contain;"
-                >
-                <img 
-                    src="{{ asset('images/productos/' . $articulo->imagen_hover) }}" 
-                    alt="Imagen secundaria de {{ $articulo->nombre }}" 
-                    class="img-fluid rounded img-hover position-absolute top-0 start-50 translate-middle-x"
-                    style="height: 100%; width: auto; max-width: 100%; object-fit: contain;"
-                >
-            </div>
+        <div class="position-relative rounded shadow overflow-hidden">
+            <img 
+                src="{{ asset('images/productos/' . $articulo->imagen) }}" 
+                alt="Imagen principal de {{ $articulo->nombre }}" 
+                class="img-fluid rounded img-original"
+                style="height: 100%; width: auto; max-width: 100%; object-fit: contain;"
+            >
+            <img 
+                src="{{ asset('images/productos/' . $articulo->imagen_hover) }}" 
+                alt="Imagen secundaria de {{ $articulo->nombre }}" 
+                class="img-fluid rounded img-hover position-absolute top-0 start-50 translate-middle-x"
+                style="height: 100%; width: auto; max-width: 100%; object-fit: contain;"
+            >
         </div>
-        <div class="col-lg-7">
-            <h1 class="fw-bold mb-3">{{ $articulo->nombre }}</h1>
+        </div>
+        <div class="col-lg-7 px-4">
+        <div class="title col-md-6 mb-4 mx-4">
+            <h2 class="position-relative d-inline-block">{{ $articulo->nombre }}</h2>
+        </div>
 
-            <h4 class="text-success mb-4">
-                <i class="bi bi-currency-dollar me-2"></i>
-                {{ number_format($articulo->precio, 2, ',', '.') }} ARS
-            </h4>
+            <h3 class="mb-4">
+                <i class="bi bi-currency-dollar me-2"></i>{{ number_format($articulo->precio, 2, ',', '.') }} ARS
+            </h3>
 
             <ul class="list-unstyled fs-5">
                 <li class="mb-3">
@@ -59,15 +60,9 @@
                     <strong>Lanzamiento:</strong> {{ $articulo->fecha_creacion }}
                 </li>
             </ul>
-
-            <form method="POST" action="#" class="mt-4">
+            <form class="mt-4">
                 @csrf
-                <input type="hidden" name="producto_id" value="{{ $articulo->id }}">
-                <input type="hidden" name="nombre" value="{{ $articulo->nombre }}">
-                <input type="hidden" name="precio" value="{{ $articulo->precio }}">
-                <input type="hidden" name="imagen" value="{{ $articulo->imagen }}">
-
-                <button type="submit" class="btn btn-dark btn-lg px-4">
+                <button class="btn btn-dark btn-lg px-4">
                     <i class="bi bi-cart-plus me-2"></i>Agregar al carrito
                 </button>
             </form>

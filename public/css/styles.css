@@ -147,7 +147,7 @@ body {
 }
 
 #productos {
-    background-color: lightgrey;
+    
     padding: 50px;
 }
 
@@ -224,12 +224,12 @@ body {
 }
 
 .btn-detalles {
-    border: 2px solid red; 
+    border: 1px solid red; 
 }
 
 .btn-detalles:hover {
     background-color: red;
-    border: 2px solid red;
+    border: 1px solid red;
     color: white; 
 }
 
@@ -361,10 +361,6 @@ form {
 .form-control:focus {
     border-color: red;
     box-shadow: none;
-}
-
-input {
-    height: 3.5rem;
 }
 
 .textarea {
