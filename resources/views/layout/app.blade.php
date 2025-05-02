@@ -4,7 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('title', 'Tienda Oficial River Plate') - Tienda Oficial River Plate</title>
+    <title>
+    @hasSection('title')
+        @yield('title') - Tienda Oficial River Plate
+    @else
+        Tienda Oficial River Plate
+    @endif
+    </title>
     <link rel="icon" type="image/x-icon" href="{{ asset('images/otros/favicon.ico') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -21,7 +27,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-white py-4 fixed-top">
             <div class="container">
                 <a href="{{ url('/') }}" class="navbar-brand d-flex align-items-center">
-                    <h1 class="navbar-brand p-3" id="logo">Tienda Oficial River Plate</h1>
+                <span class="navbar-brand p-3 fw-bold" id="logo">Tienda Oficial River Plate</span>
                 </a>
                 <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navMenu" aria-label="Menu tienda River Plate">
@@ -58,14 +64,21 @@
                         @endif
 
                         @if (auth()->check())
-                            <li class="nav-item px-2 py-2">
-                                <form method="POST" action="{{ route('auth.logout') }}">
+
+                            <!-- Nombre del usuario -->
+                            <li class="nav-item px-2 py-2 d-flex align-items-center text-uppercase text-dark fw-semibold">
+                                {{ auth()->user()->name }}
+                            </li>
+                            <!-- Botón cerrar sesión -->
+                            <li class="nav-item px-2 py-2 d-flex align-items-center">
+                                <form method="POST" action="{{ route('auth.logout') }}" class="m-0">
                                     @csrf
-                                    <button type="submit" class="btn btn-link nav-link text-uppercase text-dark">
-                                        {{auth ()->user()->name}} (Cerrar sesión)
+                                    <button type="submit" class="btn btn-danger btn-sm d-flex align-items-center gap-2" style="height: 40px;">
+                                        <i class="bi bi-box-arrow-right"></i> Salir
                                     </button>
                                 </form>
                             </li>
+
                         @else
                             <li class="nav-item px-2 py-2">
                                 <a class="nav-link text-uppercase text-dark" href="{{ url('/login') }}">Login</a>
@@ -76,49 +89,35 @@
             </div>
         </nav>
     </header>
+        
     @if(session()->has('feedback.message'))
-    <!-- Modal -->
-        <div class="modal fade" id="feedbackModal" tabindex="-1" aria-labelledby="feedbackModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header @if(session('feedback.type') == 'danger') bg-danger @else bg-success @endif text-white">
-                        <h5 class="modal-title" id="feedbackModalLabel">
-                            @if(session('feedback.type') == 'danger') Error @else Éxito @endif
-                        </h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                        {!! session('feedback.message') !!}
-                    </div>
-                </div>
+        <div class="container mt-3">
+            <div class="alert alert-{{ session('feedback.type', 'success') }} alert-dismissible fade show" role="alert">
+                {!! session('feedback.message') !!}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
             </div>
         </div>
-
-
-        <!-- Script para mostrar y cerrar automáticamente -->
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                var feedbackModal = new bootstrap.Modal(document.getElementById('feedbackModal'));
-                feedbackModal.show();
-
-                // Cerrar automáticamente luego de 3 segundos
-                setTimeout(function() {
-                    feedbackModal.hide();
-                }, 2000);
-            });
-        </script>
     @endif
-
-
-
+    
     <main class="flex-fill">
-        <section>
-            @yield('carrousel')
-        </section>
-        <section class="container">
-            @yield('content')
-        </section>
-    </main>
+    <section class="container">
+        <h1 class="text-center d-none">
+            @hasSection('title')
+                @yield('title') - Tienda Oficial River Plate
+            @else
+                Tienda Oficial River Plate
+            @endif
+        </h1>
+    </section>
+
+    <section>
+        @yield('carrousel')
+    </section>
+
+    <section class="container">
+        @yield('content')
+    </section>
+</main>
     <!-- FOOTER -->
    <footer class="text-white text-center py-4">
         <div class="container">

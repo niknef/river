@@ -13,11 +13,6 @@
                     </div>
                 <p class="mb-4">¿Tenés alguna consulta, sugerencia o querés saber más sobre nuestros productos? Escribinos:</p>
 
-                @if(session('feedback.message'))
-                    <div class="alert alert-success">
-                        {{ session('feedback.message') }}
-                    </div>
-                @endif
                 <form method="POST" action="{{ route('contacto.enviar') }}" class="row g-3">
                     @csrf
                     <div class="col-md-6">

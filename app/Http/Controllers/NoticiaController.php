@@ -40,7 +40,11 @@ class NoticiaController extends Controller
             'imagen' => $nombreImagen ? 'noticias/' . $nombreImagen : null,
         ]);
 
-        return redirect()->route('admin.noticias.index')->with('success', 'Noticia creada correctamente.');
+        return redirect()
+        ->route('admin.section', ['seccion' => 'noticias'])
+        ->with('feedback.message', 'Noticia creada correctamente.')
+        ->with('feedback.type', 'success');
+        
     }
 
     public function edit(Noticia $noticia)
@@ -71,7 +75,10 @@ class NoticiaController extends Controller
         $noticia->contenido = $request->contenido;
         $noticia->save();
 
-        return redirect()->route('admin.noticias.index')->with('success', 'Noticia actualizada correctamente.');
+        return redirect()
+        ->route('admin.section', ['seccion' => 'noticias'])
+        ->with('feedback.message', 'Noticia actualizada correctamente.')
+        ->with('feedback.type', 'success');
     }
 
     public function destroy(Noticia $noticia)
@@ -82,7 +89,10 @@ class NoticiaController extends Controller
 
         $noticia->delete();
 
-        return redirect()->route('admin.noticias.index')->with('success', 'Noticia eliminada correctamente.');
+        return redirect()
+        ->route('admin.section', ['seccion' => 'noticias'])
+        ->with('feedback.message', 'Noticia Eliminada correctamente.')
+        ->with('feedback.type', 'success');
     }
 
     public function publicas()

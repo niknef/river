@@ -10,13 +10,6 @@
         <h2 class="position-relative d-inline-block mx-4">Registro</h2>
         </div>
 
-        {{-- Mostrar error si existe --}}
-        @if(session('feedback.message'))
-            <div class="alert alert-success">
-                {{ session('feedback.message') }}
-            </div>
-        @endif
-
         <div class="bg-light p-4 rounded-3 shadow-sm">
             <form method="POST" action="{{ route('auth.register.post') }}">
                 @csrf
