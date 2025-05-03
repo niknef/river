@@ -12,7 +12,7 @@ class Compras extends Model
 
     public function articulo()
     {
-        return $this->belongsTo(Articulos::class, 'articulo_id', 'articulo_id');
+        return $this->belongsTo(Articulo::class, 'articulo_id', 'articulo_id');
     }
 
     // Permitir la asignación masiva de estos campos

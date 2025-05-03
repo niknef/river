@@ -3,29 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Articulos;
+use App\Models\Articulo;
 use App\Models\Talles;
 use App\Models\Categorias;
 
 
 
-class ArticulosController extends Controller
+class ArticuloController extends Controller
 {
-    /* public function index() {
-        $allArticulos = Articulos::with(['talles', 'categorias'])->get();
-        $talles = Talles::all();
-        $categorias = Categorias::all();
-        return view('articulos.index',[
-            'articulos' => $allArticulos,
-            'talles' => $talles,
-            'categorias' => $categorias
-        ]); 
-
-    }*/
-
+    
     public function index(Request $request)
     {
-        $query = Articulos::with(['talles', 'categorias']);
+        $query = Articulo::with(['talles', 'categorias']);
 
         // Filtro por categoría
         if ($request->filled('categoria')) {
@@ -58,13 +47,13 @@ class ArticulosController extends Controller
 }
 
     public function detalle($id) {
-        $articulo = Articulos::findOrFail($id);
+        $articulo = Articulo::findOrFail($id);
         return view('articulos.detalle', compact('articulo'));
     }
 
     public function store(Request $request) {
         $input = $request->all();
-        $articulo = new Articulos();
+        $articulo = new Articulo();
         $articulo->nombre = $input['nombre'];
         $articulo->descripcion = $input['descripcion'];
         $articulo->precio = $input['precio'];
@@ -99,7 +88,7 @@ class ArticulosController extends Controller
     }
 
     public function destroy($id) {
-        $articulo = Articulos::findOrFail($id);
+        $articulo = Articulo::findOrFail($id);
         $articulo->delete();
         if ($articulo->imagen && file_exists(public_path('images/productos/' . $articulo->imagen))) {
             unlink(public_path('images/productos/' . $articulo->imagen));
@@ -115,7 +104,7 @@ class ArticulosController extends Controller
 
     public function update(Request $request, $id)
     {
-        $articulo = Articulos::findOrFail($id);
+        $articulo = Articulo::findOrFail($id);
 
         // Asignación manual de campos
         $articulo->nombre = $request->input('nombre');

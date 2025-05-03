@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 // Usamos el controlador de la vista CONTACTO
 use App\Http\Controllers\ContactoController;
 // Usamos el controlador de la vista ARTICULOS
-use App\Http\Controllers\ArticulosController;
+use App\Http\Controllers\ArticuloController;
 // Usamos el controlador de la vista CATEGORIAS
 use App\Http\Controllers\CategoriasController;
 // Usamos el controlador de la vista TALLES
@@ -34,11 +34,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 
 // Listado de articulos
-Route::get('/articulos', [ArticulosController::class, 'index'])->name('articulos.index'); 
+Route::get('/articulos', [ArticuloController::class, 'index'])->name('articulos.index'); 
 
 //Listado de articulos por Id (DETALLE DE ARTICULO)
 //Correxion de la ruta ( /{id})
-Route::get('/articulos/{id}', [ArticulosController::class, 'detalle'])
+Route::get('/articulos/{id}', [ArticuloController::class, 'detalle'])
     ->name('articulos.detalle')
     ->whereNumber('id'); 
 
@@ -64,9 +64,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/admin/{seccion}', [AdminController::class, 'mostrarSeccion'])->name('admin.section');
 
 
-    Route::delete('/articulos/{id}', [ArticulosController::class, 'destroy'])->name('articulos.destroy');
-    Route::put('/articulos/{id}', [ArticulosController::class, 'update'])->name('articulos.update');
-    Route::post('/articulos', [ArticulosController::class, 'store'])->name('articulos.store');
+    Route::delete('/articulos/{id}', [ArticuloController::class, 'destroy'])->name('articulos.destroy');
+    Route::put('/articulos/{id}', [ArticuloController::class, 'update'])->name('articulos.update');
+    Route::post('/articulos', [ArticuloController::class, 'store'])->name('articulos.store');
 
     Route::delete('/categorias/{id}', [CategoriasController::class, 'destroy'])->name('categorias.destroy');
     Route::put('/categorias/{id}', [CategoriasController::class, 'update'])->name('categorias.update');

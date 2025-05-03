@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Articulos;
+use App\Models\Articulo;
 use App\Models\Talles;
 use App\Models\Categorias;
 use App\Models\User;
@@ -14,7 +14,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        $allArticulos = Articulos::with(['talles', 'categorias'])->get();
+        $allArticulos = Articulo::with(['talles', 'categorias'])->get();
         $talles = Talles::all();
         $categorias = Categorias::all();
         $usuarios = User::all();
@@ -33,7 +33,7 @@ class AdminController extends Controller
 
     public function mostrarSeccion($seccion)
     {
-        $articulos = Articulos::with(['talles', 'categorias'])->get();
+        $articulos = Articulo::with(['talles', 'categorias'])->get();
         $talles = Talles::all();
         $categorias = Categorias::all();
         $usuarios = User::all();
