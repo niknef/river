@@ -22,6 +22,9 @@ Se trata de un sitio web dinámico hecho con **Laravel 11**, que simula una tien
 - Artisan CLI
 
 ---
+## 🗄️ Repositorio en GitHub
+
+https://github.com/niknef/river
 
 ## 🧰 Instalación del proyecto
 
@@ -38,14 +41,14 @@ Se trata de un sitio web dinámico hecho con **Laravel 11**, que simula una tien
 #### 1. Cloná o copiá este repositorio en tu `htdocs` de XAMPP
 
 
-C:\xampp\htdocs\portales
+C:\xampp\htdocs\river
 
 
 
 #### 2. Abrí una terminal y ubicáte en la carpeta del proyecto
 
 ```bash
-cd C:/xampp/htdocs/portales
+cd C:/xampp/htdocs/river
 ```
 
 #### 3. Instalá las dependencias del proyecto
@@ -108,3 +111,4 @@ Email: admin@admin.com
 Contraseña: admin
 
 (Ver UserSeeder.php para más detalles)# river
+# TiendaRiver
