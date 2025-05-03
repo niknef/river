@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Articulo;
 use App\Models\Talles;
-use App\Models\Categorias;
+use App\Models\Categoria;
 
 
 
@@ -37,7 +37,7 @@ class ArticuloController extends Controller
 
         $filteredArticulos = $query->get();
         $talles = Talles::all();
-        $categorias = Categorias::all();
+        $categorias = Categoria::all();
 
         return view('articulos.index', [
             'articulos' => $filteredArticulos,

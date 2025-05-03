@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Articulo;
 use App\Models\Talles;
-use App\Models\Categorias;
+use App\Models\Categoria;
 use App\Models\User;
 use App\Models\Mensaje;
 use App\Models\Noticia;
@@ -16,7 +16,7 @@ class AdminController extends Controller
     {
         $allArticulos = Articulo::with(['talles', 'categorias'])->get();
         $talles = Talles::all();
-        $categorias = Categorias::all();
+        $categorias = Categoria::all();
         $usuarios = User::all();
         $mensajes = Mensaje::orderBy('fecha_envio', 'desc')->get();
         $noticias = Noticia::all();
@@ -35,7 +35,7 @@ class AdminController extends Controller
     {
         $articulos = Articulo::with(['talles', 'categorias'])->get();
         $talles = Talles::all();
-        $categorias = Categorias::all();
+        $categorias = Categoria::all();
         $usuarios = User::all();
         $mensajes = Mensaje::orderBy('fecha_envio', 'desc')->get();
         $noticias = Noticia::all();

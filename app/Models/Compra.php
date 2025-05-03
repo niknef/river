@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Compras extends Model
+class Compra extends Model
 {
     use HasFactory;
     protected $primaryKey = 'compra_id';

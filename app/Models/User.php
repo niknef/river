@@ -54,6 +54,6 @@ class User extends Authenticatable
 
     public function compras()
     {
-        return $this->hasMany(Compras::class, 'user_id', 'id');
+        return $this->hasMany(Compra::class, 'user_id', 'id');
     }
 }

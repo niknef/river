@@ -11,7 +11,7 @@ use App\Http\Controllers\ContactoController;
 // Usamos el controlador de la vista ARTICULOS
 use App\Http\Controllers\ArticuloController;
 // Usamos el controlador de la vista CATEGORIAS
-use App\Http\Controllers\CategoriasController;
+use App\Http\Controllers\CategoriaController;
 // Usamos el controlador de la vista TALLES
 use App\Http\Controllers\TalleController;
 // Usamos el controlador de la vista AUTH
@@ -25,7 +25,7 @@ use App\Http\Middleware\IsAdmin;
 //Usamos el controlador para la las Noticias de river
 use App\Http\Controllers\NoticiaController;
 
-use App\Http\Controllers\ComprasController;
+use App\Http\Controllers\CompraController;
 
 
 // LLamando al Metodo Index
@@ -43,7 +43,7 @@ Route::get('/articulos/{id}', [ArticuloController::class, 'detalle'])
     ->whereNumber('id'); 
 
 // Ruta para agregar una compra al carrito
-Route::post('/articulos/{articulo_id}', [ComprasController::class, 'store'])->name('compras.store');
+Route::post('/articulos/{articulo_id}', [CompraController::class, 'store'])->name('compras.store');
 
 //Ruta para vista de contacto
 Route::get('/contacto', [ContactoController::class, 'contacto'])->name('contacto');
@@ -68,9 +68,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::put('/articulos/{id}', [ArticuloController::class, 'update'])->name('articulos.update');
     Route::post('/articulos', [ArticuloController::class, 'store'])->name('articulos.store');
 
-    Route::delete('/categorias/{id}', [CategoriasController::class, 'destroy'])->name('categorias.destroy');
-    Route::put('/categorias/{id}', [CategoriasController::class, 'update'])->name('categorias.update');
-    Route::post('/categorias', [CategoriasController::class, 'store'])->name('categorias.store');
+    Route::delete('/categorias/{id}', [CategoriaController::class, 'destroy'])->name('categorias.destroy');
+    Route::put('/categorias/{id}', [CategoriaController::class, 'update'])->name('categorias.update');
+    Route::post('/categorias', [CategoriaController::class, 'store'])->name('categorias.store');
 
     Route::delete('/talles/{id}', [TalleController::class, 'destroy'])->name('talles.destroy');
     Route::put('/talles/{id}', [TalleController::class, 'update'])->name('talles.update');

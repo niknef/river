@@ -3,16 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Compras;
+use App\Models\Compra;
 use App\Models\Articulo;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
-class ComprasController extends Controller
+class CompraController extends Controller
 {
     public function store($articulo_id)
     {
-        Compras::create([
+        Compra::create([
             'user_id' => Auth::id(),
             'articulo_id' => $articulo_id,
         ]);
