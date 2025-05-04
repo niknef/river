@@ -7,7 +7,7 @@
     <div class="row g-0">
         <!-- Columna izquierda: Formulario -->
         <div class="col-md-6 d-flex align-items-center justify-content-center bg-white">
-            <div class="w-100 p-5 h-100 d-flex flex-column justify-content-center">
+            <div class="w-100 pb-5 h-100 d-flex flex-column justify-content-center">
             <div class="title pt-3 pb-5">
                         <h2 class="position-relative d-inline-block ms-4">Contacto</h2>
                     </div>

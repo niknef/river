@@ -56,10 +56,10 @@
                                 <li class="nav-item px-2 py-2">
                                     <a class="nav-link text-uppercase text-dark" href="{{ route('admin.index') }}">Administración</a>
                                 </li>
-                            @elseif(auth()->user()->role === 'user')
+                            {{-- @elseif(auth()->user()->role === 'user')
                                 <li class="nav-item px-2 py-2">
                                     <a class="nav-link text-uppercase text-dark" href="{{ url('/carrito') }}">Carrito</a>
-                                </li>
+                                </li> --}}
                             @endif
                         @endif
 
@@ -125,11 +125,11 @@
                 </div>
                 <div class="col-md-6">
                     <!-- REDES -->
-                    <a href="https://www.facebook.com/riverplateoficial/?locale=es_LA" class="btn btn-outline-light mx-2"><i
+                    <a href="https://www.facebook.com/riverplateoficial/?locale=es_LA" class="btn btn-outline-light mx-2" target="_blank"><i
                             class="fab fa-facebook-f"></i></a>
-                    <a href="https://x.com/RiverPlate?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="btn btn-outline-light mx-2"><i
+                    <a href="https://x.com/RiverPlate?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor" class="btn btn-outline-light mx-2" target="_blank"><i
                             class="fab fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/riverplate/" class="btn btn-outline-light mx-2"><i
+                    <a href="https://www.instagram.com/riverplate/" class="btn btn-outline-light mx-2" target="_blank"><i
                             class="fab fa-instagram"></i></a>
                 </div>
             </div>

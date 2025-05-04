@@ -251,12 +251,12 @@ body {
 }
 #titulo-descuento{
 text-align: center;
-margin-left:30px;
+/* margin-left:30px; */
 }
 
-#productos-home {
+/* #productos-home {
     padding: 100px; 
-}
+} */
 
 /* UNITE A RIVER ID */
 .img-container img {

@@ -7,7 +7,7 @@ use App\Models\Articulo;
 use App\Models\Talles;
 use App\Models\Categoria;
 
-
+use Illuminate\Database\QueryException;
 
 class ArticuloController extends Controller
 {
@@ -87,19 +87,38 @@ class ArticuloController extends Controller
             ->with('feedback.type', 'success');
     }
 
-    public function destroy($id) {
-        $articulo = Articulo::findOrFail($id);
-        $articulo->delete();
-        if ($articulo->imagen && file_exists(public_path('images/productos/' . $articulo->imagen))) {
-            unlink(public_path('images/productos/' . $articulo->imagen));
+    public function destroy($id)
+    {
+        try {
+            $articulo = Articulo::findOrFail($id);
+            $articulo->delete();
+
+            if ($articulo->imagen && file_exists(public_path('images/productos/' . $articulo->imagen))) {
+                unlink(public_path('images/productos/' . $articulo->imagen));
+            }
+
+            if ($articulo->imagen_hover && file_exists(public_path('images/productos/' . $articulo->imagen_hover))) {
+                unlink(public_path('images/productos/' . $articulo->imagen_hover));
+            }
+
+            return redirect()
+                ->route('admin.section', ['seccion' => 'articulos'])
+                ->with('feedback.message', 'Artículo eliminado correctamente')
+                ->with('feedback.type', 'success');
+
+        } catch (QueryException $e) {
+            if ($e->getCode() === '23000') {
+                return redirect()
+                    ->route('admin.section', ['seccion' => 'articulos'])
+                    ->with('feedback.message', 'No se puede eliminar este artículo porque está relacionado con otros registros.')
+                    ->with('feedback.type', 'danger');
+            }
+
+            return redirect()
+                ->route('admin.section', ['seccion' => 'articulos'])
+                ->with('feedback.message', 'Error al intentar eliminar el artículo.')
+                ->with('feedback.type', 'danger');
         }
-        if ($articulo->imagen_hover && file_exists(public_path('images/productos/' . $articulo->imagen_hover))) {
-            unlink(public_path('images/productos/' . $articulo->imagen_hover));
-        }
-        return redirect()
-            ->route('admin.section', ['seccion' => 'articulos'])
-            ->with('feedback.message', 'Articulo eliminado correctamente')
-            ->with('feedback.type', 'success');
     }
 
     public function update(Request $request, $id)

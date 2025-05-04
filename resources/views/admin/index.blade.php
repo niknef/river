@@ -2,7 +2,7 @@
 @section('title', 'Panel de Administrador')
 
 @section('content')
-<div class="container mt-4">
+<div class="container my-4">
     <h2 class="text-center mb-4">Panel de Administrador</h2>
 
     @if (request()->routeIs('admin.index'))
@@ -29,7 +29,7 @@
         </div>
     @else
         {{-- Si hay una sección activa, mostrar los botones normales --}}
-        <div class="d-flex justify-content-center gap-2 my-4">
+        <div class="d-flex justify-content-center gap-2 my-4 flex-wrap">
             <a href="{{ route('admin.section', ['seccion' => 'articulos']) }}" class="btn btn-primary">Artículos</a>
             <a href="{{ route('admin.section', ['seccion' => 'talles']) }}" class="btn btn-secondary">Talles</a>
             <a href="{{ route('admin.section', ['seccion' => 'categorias']) }}" class="btn btn-info">Categorías</a>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Talles;
+use Illuminate\Database\QueryException;
 
 class TalleController extends Controller
 {
@@ -35,12 +36,26 @@ class TalleController extends Controller
 
     public function destroy($id)
     {
-        $talle = Talles::findOrFail($id);
-        $talle->delete();
-        
-        return redirect()
-            ->route('admin.section', ['seccion' => 'talles'])
-            ->with('feedback.message', 'Talle eliminado correctamente')
-            ->with('feedback.type', 'success');
+        try {
+            $talle = Talles::findOrFail($id);
+            $talle->delete();
+
+            return redirect()
+                ->route('admin.section', ['seccion' => 'talles'])
+                ->with('feedback.message', 'Talle eliminado correctamente')
+                ->with('feedback.type', 'success');
+        } catch (QueryException $e) {
+            if ($e->getCode() === '23000') {
+                return redirect()
+                    ->route('admin.section', ['seccion' => 'talles'])
+                    ->with('feedback.message', 'No se puede eliminar este talle porque está en uso por uno o más artículos.')
+                    ->with('feedback.type', 'danger');
+            }
+
+            return redirect()
+                ->route('admin.section', ['seccion' => 'talles'])
+                ->with('feedback.message', 'Error al intentar eliminar el talle.')
+                ->with('feedback.type', 'danger');
+        }
     }
 }
